@@ -3,7 +3,7 @@ Simplified cf-metrics, is a mod from the original cf-metrics from MonsantoCo(htt
 
 It is a more simpler setup, with firehose-nozzle feeding influxdb.  For viewing and alerting, I used grafana.
 
-It works, it is simpler to setup than the original.
+It works, it is easier to setup than the original.
 
 # Setup
 
