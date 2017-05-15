@@ -5,6 +5,11 @@ It is a more simpler setup, with firehose-nozzle feeding influxdb.  For viewing 
 
 It works, it is easier to setup than the original.
 
+# Screenshots
+
+![grafana 1x](https://cloud.githubusercontent.com/assets/13236382/26058800/d38f5b10-3955-11e7-8401-c4d55a551279.png)
+![grafana 2x](https://cloud.githubusercontent.com/assets/13236382/26058804/d8b84f98-3955-11e7-8769-a05e29ad08bc.png)
+
 # Setup
 
 You need a working cf deployment and a host with docker and docker-compose.
