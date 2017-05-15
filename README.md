@@ -17,7 +17,7 @@ Here is a brief list of variables to modify:
     PRE_CREATE_DB=cf_prd;cf_np;bosh_prd;bosh_np 
   
 2.- Modify enviroment Variables for nozzle:
-
+```
   NOZZLE_UAAURL=https://uaa.cf-np.company.com
   
   NOZZLE_CLIENT=client_id
@@ -27,7 +27,7 @@ Here is a brief list of variables to modify:
   NOZZLE_TRAFFICCONTROLLERURL=wss://doppler.cf-np.company.com:443
   
   NOZZLE_DEPLOYMENT=cf_aws_np
-
+```
 Set the appropiate values.
   
 3.-  Firehose Nozzle Configuration
@@ -44,14 +44,14 @@ Update the following section to reflect the fqdn of your docker host:
 
 
 ./grafana/grafana.ini
-
+```
  # The public facing domain name used to access grafana from a browser
  domain = server.company.com
-
+```
 5.-  Cloud Foundry Setup
 
 Update the following section in your cloud foundry manifest and redeploy cf to enable a uaa client for the firehose nozzle:
-
+```
 properties:
   uaa:
     clients:
@@ -62,9 +62,9 @@ properties:
         secret: <password>
         scope: openid,oauth.approvals,doppler.firehose
         authorities: oauth.login,doppler.firehose
-
+```
 6.-  Run docker-compose
-
+```
 $  docker-compose up -d
-
+```
 NOTE:  You can configure the slack notifications, or email notifications in Grafana directly.
