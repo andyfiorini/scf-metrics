@@ -1,0 +1,19 @@
+{
+  "UAAURL": "https://uaa.apps.64.78.155.215.nip.io",
+  "Client": "influxdb-firehose-nozzle",
+  "ClientSecret": "monpass",
+  "TrafficControllerURL": "wss://doppler.apps.64.78.155.215.nip.io:443",
+  "FirehoseSubscriptionID": "influxdb-firehose-nozzle",
+  "InfluxDbUrl": "http://influxdb:8086",
+  "InfluxDbDatabase": "cf_prd",
+  "InfluxDbUser": "root",
+  "InfluxDbPassword": "admin",
+  "FlushDurationSeconds": 15,
+  "SsLSkipVerify": true,
+  "MetricPrefix": "firehose.",
+  "Deployment": "deployment",
+  "EventFilter": "CounterEvent, ValueMetric",
+  "DisableAccessControl": false,
+  "IdleTimeoutSeconds" : 60
+}
+
