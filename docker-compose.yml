@@ -1,0 +1,43 @@
+influxdb:
+  build: ./influxdb
+  ports: 
+  - "8083:8083"
+  - "8088:8088"
+  - "8086:8086"
+  environment:
+# the list of cf deployments. This parameter is for creating influxdb databases
+  - PRE_CREATE_DB=cf_np;cf_prd;bosh_np;bosh_prd
+# The volume to mount on containers, where the data is going to be later.
+  volumes: 
+  - ./data/influxdb:/data
+  restart: always
+grafana:
+  build: ./grafana
+  ports:
+  - "3000:3000"
+  volumes:
+  - ./grafana/grafana.ini:/etc/grafana/grafana.ini:ro
+  - ./data/grafana:/usr/share/grafana/data
+  environment:
+  - GF_AUTH_ANONYMOUS_ENABLED=true
+  - GF_AUTH_ANONYMOUS_ORG_ROLE=Editor
+  - GF_DASHBOARDS_JSON_ENABLED=true
+  - GF_DASHBOARDS_JSON_PATH=/etc/grafana/dashboards
+  links: 
+  - influxdb 
+  restart: always
+# For each cf deployment, you need to define a stanza like this containig definition for a uniqe firehose-nozzle
+nozzleprd: 
+  build: ./firehose-nozzle
+  environment:
+  - NOZZLE_UAAURL=https://uaa.xxx.xxx.xxx.xxx.nip.io
+  - NOZZLE_CLIENT=influxdb-firehose-nozzle
+  - NOZZLE_CLIENT_SECRET=monpass
+  - NOZZLE_TRAFFICCONTROLLERURL=wss://doppler.apps.xxx.xxx.xxx.xxx.nip.io:443
+  - NOZZLE_DEPLOYMENT=name_of_cf_deployment
+  - NOZZLE_EVENT_FILTER=CounterEvent,ValueMetric
+  - NOZZLE_FIREHOSESUBSCRIPTIONID=cf-metrics
+  - NOZZLE_INFLUXDB_URL=http://influxdb:8086
+  links:
+  - influxdb
+  restart: always
