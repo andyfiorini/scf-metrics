@@ -12,22 +12,21 @@ You need a working cf deployment and a host with docker and docker-compose.
 1.- Modify the docker-compose.yml file with the necesary vars.
 
 Here is a brief list of variables to modify:
-
+```
   environment:
     PRE_CREATE_DB=cf_prd;cf_np;bosh_prd;bosh_np 
+```
   
 2.- Modify enviroment Variables for nozzle:
+
 ```
   NOZZLE_UAAURL=https://uaa.cf-np.company.com
-  
   NOZZLE_CLIENT=client_id
-  
   NOZZLE_CLIENT_SECRET=secret
-  
   NOZZLE_TRAFFICCONTROLLERURL=wss://doppler.cf-np.company.com:443
-  
   NOZZLE_DEPLOYMENT=cf_aws_np
 ```
+
 Set the appropiate values.
   
 3.-  Firehose Nozzle Configuration
