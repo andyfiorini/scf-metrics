@@ -63,4 +63,4 @@ properties:
 
 $  docker-compose up -d
 
-# NOTE:  You must configure the slack notifications in Grafana directly.
+NOTE:  You can configure the slack notifications, or email notifications in Grafana directly.
